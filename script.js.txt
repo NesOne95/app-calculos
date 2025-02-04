@@ -1,0 +1,51 @@
+function calcularDosis() {
+    const peso = parseFloat(document.getElementById('peso').value);
+    if (isNaN(peso) || peso <= 0) {
+        alert("Por favor, ingrese un peso válido.");
+        return;
+    }
+
+    const dosis = {
+        Ketamina: (peso * 7) / 50,
+        Xilacina: (peso * 71.1) / 20,
+        Propofol: (peso * 1.5) / 10,
+        Dipirona: (peso * 20) / 500,
+        MeloxicamPrimera: (peso * 0.2) / 5,
+        MeloxicamSegunda: (peso * 0.1) / 5,
+        Dexa: (peso * 0.5) / 4,
+        Duplo: (peso * 1.5) / 7,
+        Uniclav: (peso * 1) / 20,
+        Quercetol: (peso * 1) / 10
+    };
+
+    const resultados = document.getElementById('resultados');
+    resultados.innerHTML = `
+        <tr>
+            <th>Medicamento</th>
+            <th>Dosis (ml)</th>
+        </tr>
+        <tr><td>Ketamina</td><td>${dosis.Ketamina.toFixed(2)}</td></tr>
+        <tr><td>Xilacina</td><td>${dosis.Xilacina.toFixed(2)}</td></tr>
+        <tr><td>Propofol</td><td>${dosis.Propofol.toFixed(2)}</td></tr>
+        <tr><td>Dipirona</td><td>${dosis.Dipirona.toFixed(2)}</td></tr>
+        <tr><td>Meloxicam (1ra dosis)</td><td>${dosis.MeloxicamPrimera.toFixed(2)}</td></tr>
+        <tr><td>Meloxicam (2da dosis)</td><td>${dosis.MeloxicamSegunda.toFixed(2)}</td></tr>
+        <tr><td>Dexa</td><td>${dosis.Dexa.toFixed(2)}</td></tr>
+        <tr><td>Duplo</td><td>${dosis.Duplo.toFixed(2)}</td></tr>
+        <tr><td>Uniclav</td><td>${dosis.Uniclav.toFixed(2)}</td></tr>
+        <tr><td>Quercetol</td><td>${dosis.Quercetol.toFixed(2)}</td></tr>
+    `;
+}
+
+// Registrar el Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+            .then((registration) => {
+                console.log('Service Worker registrado con éxito:', registration);
+            })
+            .catch((error) => {
+                console.log('Error al registrar el Service Worker:', error);
+            });
+    });
+}

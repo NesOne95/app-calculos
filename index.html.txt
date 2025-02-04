@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dosis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icon-192x192.png">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Dosis de Medicamentos</h1>
+        <label for="peso">Peso del Paciente (kg):</label>
+        <input type="number" id="peso" placeholder="Ingrese el peso en kg">
+        <button onclick="calcularDosis()">Calcular Dosis</button>
+
+        <h2>Resultados:</h2>
+        <table id="resultados">
+            <tr>
+                <th>Medicamento</th>
+                <th>Dosis (ml)</th>
+            </tr>
+            <!-- Los resultados se insertarán aquí -->
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
